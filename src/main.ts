@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(cookieParser());
   app.enableCors({
-    origin: true, // или нужный фронтенд-адрес
+    origin: ['http://localhost:3000', 'https://food-combo-app.vercel.app/'], // или нужный фронтенд-адрес
     credentials: true,
   });
   await app.listen(process.env.PORT ?? 3001);
