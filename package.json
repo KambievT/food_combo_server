@@ -9,6 +9,8 @@
     "generate": "prisma generate",
     "build": "pnpm run generate && nest build",
     "postinstall": "prisma generate",
+    "migrate:deploy": "prisma migrate deploy",
+    "start:with-migrate": "pnpm run migrate:deploy && pnpm run start:prod",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
