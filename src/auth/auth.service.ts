@@ -49,6 +49,8 @@ export class AuthService {
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        secure: true,
       });
     }
     return {
