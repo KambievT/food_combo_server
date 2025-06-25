@@ -47,7 +47,7 @@ export class AuthService {
     if (response) {
       response.cookie('refresh_token', refresh_token, {
         httpOnly: true,
-        sameSite: 'lax',
+        sameSite: 'none',
         path: '/',
         maxAge: 7 * 24 * 60 * 60 * 1000,
         secure: true,
