@@ -19,4 +19,20 @@ model User {
   email    String @unique
   password String
   refreshToken String?
+  orders   Order[]
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
+  items       Json     // Массив товаров в заказе
+  totalAmount Float
+  status      String   @default("pending") // pending, paid, completed, cancelled
+  paymentId   String?  // ID платежа в ЮKassa
+  phone       String   // Номер телефона
+  deliveryType String  // pickup, delivery - способ получения
+  address     String?  // Адрес доставки (если deliveryType = delivery)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
