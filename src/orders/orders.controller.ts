@@ -61,7 +61,7 @@ class CreateOrderRequestDto {
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
-  @Post()
+  @Post('create-order')
   @HttpCode(HttpStatus.CREATED)
   async createOrder(
     @Body() createOrderDto: CreateOrderRequestDto,
@@ -70,7 +70,7 @@ export class OrdersController {
     return this.ordersService.createOrder(req.user.userId, createOrderDto);
   }
 
-  @Get()
+  @Get('get-user-orders')
   @HttpCode(HttpStatus.OK)
   async getUserOrders(@Request() req) {
     return this.ordersService.getUserOrders(req.user.userId);
