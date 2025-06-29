@@ -11,7 +11,7 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
-import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { AccessOrRefreshGuard } from '../auth/access-or-refresh.guard';
 import {
   IsArray,
   IsNumber,
@@ -57,7 +57,7 @@ class CreateOrderRequestDto {
 }
 
 @Controller('orders')
-@UseGuards(JwtAuthGuard)
+@UseGuards(AccessOrRefreshGuard)
 export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
