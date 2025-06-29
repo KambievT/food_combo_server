@@ -22,6 +22,6 @@ import { AccessOrRefreshGuard } from './access-or-refresh.guard';
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy, PrismaService, AccessOrRefreshGuard],
-  exports: [AuthService],
+  exports: [AuthService, JwtModule, AccessOrRefreshGuard],
 })
 export class AuthModule {}
