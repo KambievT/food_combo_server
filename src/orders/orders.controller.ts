@@ -68,14 +68,14 @@ export class OrdersController {
     @Request() req,
   ) {
     console.log('req.user:', req.user);
-    const userId = req.user.userId || req.user.id;
+    const userId = req.user.userId || req.user.id || req.user.sub;
     return this.ordersService.createOrder(userId, createOrderDto);
   }
 
   @Get('get-user-orders')
   @HttpCode(HttpStatus.OK)
   async getUserOrders(@Request() req) {
-    const userId = req.user.userId || req.user.id;
+    const userId = req.user.userId || req.user.id || req.user.sub;
     return this.ordersService.getUserOrders(userId);
   }
 
@@ -85,7 +85,7 @@ export class OrdersController {
     @Param('id', ParseIntPipe) orderId: number,
     @Request() req,
   ) {
-    const userId = req.user.userId || req.user.id;
+    const userId = req.user.userId || req.user.id || req.user.sub;
     return this.ordersService.getOrderById(orderId, userId);
   }
 }
