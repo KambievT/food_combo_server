@@ -32,7 +32,7 @@ export class OrdersService {
     const order = await this.prisma.order.create({
       data: {
         userId,
-        items: createOrderDto.items,
+        items: createOrderDto.items as any,
         totalAmount,
         status: 'pending',
         phone: createOrderDto.phone,
